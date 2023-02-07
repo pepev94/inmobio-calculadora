@@ -179,8 +179,15 @@ const RoiCalculator = ({
               endIcon={<AddIcon />}
             ></Button>
           </Box>
+          <Box sx={{ display: { xs: "block", sm: "none" } }}>
+            {" "}
+            <Bar options={options} height={400} data={chartData} />
+          </Box>
+          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            {" "}
+            <Bar options={options} data={chartData} />
+          </Box>
 
-          <Bar options={options} data={chartData} />
           <Typography sx={{ fontFamily: "Varela" }} variant="h6">
             Resumen
           </Typography>
