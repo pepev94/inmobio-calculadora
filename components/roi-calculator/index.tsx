@@ -110,13 +110,13 @@ const transformForChart = (results: Results[]) => {
   chartData.datasets.push({
     label: "Plusvalia",
     data: results.map((item) => item.capitalGains),
-    backgroundColor: "rgb(53, 162, 235)",
+    backgroundColor: "#2bfcc8",
   });
 
   chartData.datasets.push({
     label: "Rentas",
     data: results.map((item) => item.cashflow),
-    backgroundColor: "grey",
+    backgroundColor: "#2b8efc",
   });
 
   chartData.datasets.push({

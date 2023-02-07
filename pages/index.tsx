@@ -1,10 +1,16 @@
 import Head from "next/head";
-import { Inter } from "@next/font/google";
 import RoiCalculator from "@/components/roi-calculator";
-
-const inter = Inter({ subsets: ["latin"] });
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter();
+  const {
+    fractionCost,
+    plusvalia,
+    airbnbNightCost,
+    percentageOccupationEstimation,
+    years,
+  } = router.query;
   return (
     <>
       <Head>
@@ -14,7 +20,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/*@ts-ignore */}
-      <RoiCalculator />
+      <RoiCalculator
+        fractionCost={parseFloat((fractionCost as string) || "390000")}
+        plusvalia={parseFloat((plusvalia as string) || "0.12")}
+        airbnbNightCost={parseFloat((airbnbNightCost as string) || "3000")}
+        percentageOccupationEstimation={parseFloat(
+          (percentageOccupationEstimation as string) || "0.62"
+        )}
+        years={parseFloat((years as string) || "5")}
+      />
     </>
   );
 }
