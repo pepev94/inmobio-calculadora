@@ -129,10 +129,10 @@ const transformForChart = (results: Results[]) => {
 };
 
 const RoiCalculator = ({
-  fractionCost = 390000,
+  fractionCost = 426247,
   plusvalia = 0.12,
-  airbnbNightCost = 3000,
-  percentageOccupationEstimation = 0.62,
+  airbnbNightCost = 1400,
+  percentageOccupationEstimation = 0.55,
   years: numberOfYears = 5,
 }: Props) => {
   const ref = useRef(null);
