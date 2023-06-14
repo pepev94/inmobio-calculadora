@@ -21,9 +21,9 @@ export default function Home() {
       </Head>
       {/*@ts-ignore */}
       <RoiCalculator
-        fractionCost={parseFloat((fractionCost as string) || "390000")}
+        fractionCost={parseFloat((fractionCost as string) || "350000")}
         plusvalia={parseFloat((plusvalia as string) || "0.12")}
-        airbnbNightCost={parseFloat((airbnbNightCost as string) || "3000")}
+        airbnbNightCost={parseFloat((airbnbNightCost as string) || "1200")}
         percentageOccupationEstimation={parseFloat(
           (percentageOccupationEstimation as string) || "0.62"
         )}

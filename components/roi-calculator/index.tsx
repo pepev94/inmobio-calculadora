@@ -110,26 +110,26 @@ const transformForChart = (results: Results[]) => {
   chartData.datasets.push({
     label: "Plusvalia",
     data: results.map((item) => item.capitalGains),
-    backgroundColor: "#2bfcc8",
+    backgroundColor: "#5E17EB",
   });
 
   chartData.datasets.push({
     label: "Rentas",
     data: results.map((item) => item.cashflow),
-    backgroundColor: "#2b8efc",
+    backgroundColor: "#1D1DFF",
   });
 
   chartData.datasets.push({
     label: "Días Gratis",
     data: results.map((item) => item.freeNights),
-    backgroundColor: "yellow",
+    backgroundColor: "#b2b2f7",
   });
 
   return chartData;
 };
 
 const RoiCalculator = ({
-  fractionCost = 426247,
+  fractionCost = 35000,
   plusvalia = 0.12,
   airbnbNightCost = 1400,
   percentageOccupationEstimation = 0.55,
@@ -146,6 +146,20 @@ const RoiCalculator = ({
     percentageOccupationEstimation,
     airbnbNightCost,
   });
+
+  const totalRent = results.reduce(
+    (accumulator, currentValue) => accumulator + currentValue.cashflow,
+    0
+  );
+  const totalPlusvalia = results.reduce(
+    (acc, next) => acc + next.capitalGains,
+    0
+  );
+  const totalVacations = results.reduce(
+    (accumulator, currentValue) => accumulator + currentValue.freeNights,
+    0
+  );
+  const totalValue = totalRent + totalPlusvalia + totalVacations;
 
   const chartData = transformForChart(results);
   return (
@@ -191,34 +205,23 @@ const RoiCalculator = ({
           <Typography sx={{ fontFamily: "Varela" }} variant="h6">
             Resumen
           </Typography>
-          <Typography
-            variant="h6"
-            color="primary"
-            sx={{ fontFamily: "Varela" }}
-          >
-            Suma de rentas{" "}
-            {formatter.format(
-              results.reduce(
-                (accumulator, currentValue) =>
-                  accumulator + currentValue.cashflow,
-                0
-              )
-            )}
+          <Typography variant="body1">
+            Suma de rentas {formatter.format(totalRent)}
             MXN
           </Typography>
           <Typography variant="body1" sx={{ fontFamily: "Varela" }}>
-            Aumento de plusvalia{" "}
-            {formatter.format(results[results.length - 1].capitalGains)} MXN
+            Aumento de plusvalia {formatter.format(totalPlusvalia)} MXN
           </Typography>
           <Typography variant="body1" sx={{ fontFamily: "Varela" }}>
-            Suma en días de vacaciones{" "}
-            {formatter.format(
-              results.reduce(
-                (accumulator, currentValue) =>
-                  accumulator + currentValue.freeNights,
-                0
-              )
-            )}
+            Suma en días de vacaciones {formatter.format(totalVacations)}
+            MXN
+          </Typography>
+          <Typography
+            variant="h6"
+            color="#5E17EB"
+            sx={{ fontFamily: "Varela" }}
+          >
+            Suma total: {formatter.format(totalValue)}
             MXN
           </Typography>
           <Box sx={{ mt: 2 }}>
