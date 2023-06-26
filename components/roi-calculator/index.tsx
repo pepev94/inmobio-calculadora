@@ -132,7 +132,7 @@ const RoiCalculator = ({
   fractionCost = 35000,
   plusvalia = 0.12,
   airbnbNightCost = 1400,
-  percentageOccupationEstimation = 0.55,
+  percentageOccupationEstimation = 0.65,
   years: numberOfYears = 5,
 }: Props) => {
   const ref = useRef(null);
@@ -233,7 +233,8 @@ const RoiCalculator = ({
               {" "}
               Plusvalia: {plusvalia}, Porcentage de ocupacion:{" "}
               {percentageOccupationEstimation}, costo de noche:{" "}
-              {airbnbNightCost} MXN
+              {airbnbNightCost} MXN, costo de inmueble de{" "}
+              {formatter.format(fractionCost)} MXN
             </Typography>
           </Box>
         </CardContent>
