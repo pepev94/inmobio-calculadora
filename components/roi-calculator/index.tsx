@@ -84,7 +84,7 @@ const getResults = ({
       label: "Año " + (i + 1),
       capitalGains: lastPrice * plusvalia,
       cashflow: (nightCost * 365 * percentageOccupationEstimation * 0.8) / 10,
-      freeNights: nightCost * 7,
+      freeNights: nightCost * 5,
       price: newBasePrice,
       cost: i === 0 ? -fractionCost : 0,
     });
